@@ -1,34 +1,58 @@
-import React from 'react'
-import {Section, Head3, Input, Button,GreenButton} from '../styledComponents'
+import React, {Component} from 'react'
+import {Section, Head3, Input, Button} from '../styledComponents'
+import EducationItem from './EducationItem'
+import handleChange from './HandleChange'
+import {v4 as uuidv4} from 'uuid'
 
-function Education(props) {
-    if(props.education.length === 0){
+class Education extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            university:"University",
+            city:"City",
+            to:"To",
+            from:"From",
+            subject:"Subject",
+            degree:"Degree"
+        }
+        this.baseState = this.state
+        this.handleChange = handleChange.bind(this)
+        this.reset = this.resetState.bind(this)
+    }
+    resetState(){
+        this.setState(this.baseState)
+    }
+    render(){
         return(
+            <React.Fragment>
             <Section>
-            <Head3>Education</Head3>
-            <Input placeholder="University Name"></Input>
-            <Input placeholder="City"></Input>
-            <Input placeholder="Degree"></Input>
-            <Input placeholder="Subject"></Input>
-            <Input placeholder="From"></Input>
-            <Input placeholder="To"></Input>
-            <GreenButton>Add</GreenButton>
-            <Button>Delete</Button>
+            <Head3>Add Education</Head3>
+            <Input name="university" onChange={this.handleChange} value={this.state.university}></Input>
+            <Input name="city" onChange={this.handleChange} value={this.state.city}></Input>
+            <Input name="degree" onChange={this.handleChange} value={this.state.degree}></Input>
+            <Input name="subject" onChange={this.handleChange} value={this.state.subject}></Input>
+            <Input name="from" onChange={this.handleChange} value={this.state.from}></Input>
+            <Input name="to" onChange={this.handleChange} value={this.state.to}></Input>
+            <Button name="add" 
+            onClick={() => {
+                this.props.addEducation(this.state)
+                this.resetState()
+            }}>
+                Add
+                </Button>
             </Section>
+                {this.props.data.map(item => {
+                    return(
+                    <EducationItem
+                    key={uuidv4()} 
+                    data={item}
+                    saveEducation={this.props.saveEducation}
+                    deleteEducation={this.props.deleteEducation}>
+                    </EducationItem>
+                    )
+    })}
+            </React.Fragment>
         )
-    }else{
-        return props.education.map((item,index) =>(
-            <Section key={index}>
-            <Head3>Education</Head3>
-            <Input value={item.university} name="university"></Input>
-            <Input value={item.city} name="city"></Input>
-            <Input value={item.degree} name="degree"></Input>
-            <Input value={item.subject} name="subject"></Input>
-            <Input value={item.from} name="from"></Input>
-            <Input value={item.to} name="to"></Input>
-            <Button>Delete</Button>
-            </Section>
-        ))
     }
 }
 
