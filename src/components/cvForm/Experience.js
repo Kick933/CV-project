@@ -23,6 +23,8 @@ class Experience extends Component{
         <>
         {this.props.data.map(item => <ExperienceItem
         key={uuidv4()}
+        saveExperience={this.props.saveExperience}
+        deleteExperience={this.props.deleteExperience}
         data={item}>
         </ExperienceItem>)}
         <Section>
@@ -32,7 +34,6 @@ class Experience extends Component{
             <Input onChange={this.handleChange} value={this.state.city} name="city"></Input>
             <Input onChange={this.handleChange} value={this.state.from}name="from"></Input>
             <Input onChange={this.handleChange} value={this.state.to} name="to"></Input>
-            <Button>Delete</Button>
             <Button
             onClick={() => {this.props.addExperience(this.state)
             this.setState(this.baseState)}}>

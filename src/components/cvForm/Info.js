@@ -8,6 +8,7 @@ import {LeftWrap,
 import Education from './Education'
 import Experience from './Experience'
 import PersonalInfo from './PersonalInfo'
+import handleChange from './HandleChange'
 
 class Info extends Component{
     constructor(){
@@ -23,19 +24,43 @@ class Info extends Component{
             education: [],
             experience: []
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.exampleState = {
+            firstName: "Abhinav",
+            lastName: "Shukla",
+            title: "Mr.",
+            address: "61,Professor Colony,Azadnagar, Jind",
+            phoneNumber: "9876543210",
+            email: "test@test.com",
+            description: "I would hire someone who loves their work. And I love web development. I taught myself javascript because i love web development.",
+            education: [
+                {
+                    university: "Example University",
+                    degree: "B.Tech",
+                    subject: "Mechanical",
+                    from: "2010",
+                    to: "2014",
+                    city: "Mumbai"
+                }
+            ],
+            experience: [
+                {
+                    position: "Junior Web Developer",
+                    company: "Example Company",
+                    from: "2015",
+                    to: "2020",
+                    city: "Mumbai"
+                }
+            ]
+        }
+        this.baseState = this.state
+        this.handleChange = handleChange.bind(this)
         this.PersonalInfo = PersonalInfo.bind(this)
         this.addEducation = this.addEducation.bind(this)
         this.deleteEducation = this.deleteEducation.bind(this)
         this.saveEducation = this.saveEducation.bind(this)
         this.addExperience = this.addExperience.bind(this)
-    }
-    handleChange(event) {
-        event.preventDefault();
-        const { name,value } = event.target
-        this.setState({
-            [name] : value
-        })
+        this.saveExperience = this.saveExperience.bind(this)
+        this.deleteExperience = this.deleteExperience.bind(this)
     }
 
     addEducation(x){
@@ -65,7 +90,7 @@ class Info extends Component{
     deleteEducation(event){
         const {id} = event.target
         this.setState(prevState =>{
-           return { education: prevState.education.filter(a => a.identity !== parseInt(id))}
+           return { education: prevState.education.filter(a => a.identity !== parseInt(id)).map((x,index) => x = {...x,identity:index})}
         })
     }
 
@@ -82,13 +107,35 @@ class Info extends Component{
         })
     }
 
+    saveExperience(x){
+        const {identity} = x
+        this.setState(prevState =>{
+            return{
+                ...prevState,
+                experience:[
+                    ...prevState.experience.filter(i => i.identity !== parseInt(identity)),
+                    x
+                ]
+            }
+        })
+    }
+
+    deleteExperience(event){
+        const {id} = event.target
+        this.setState(prevState =>{
+           return { experience: prevState.experience.filter(a => a.identity !== parseInt(id)).map((x,index) => x = {...x,identity:index})}
+        })
+    }
+
     render(){
     return(
         <LeftWrap>
             <PersonalInfo data={this.state} handleChange={this.handleChange}></PersonalInfo>
             <Experience 
             addExperience={this.addExperience}
-            data={this.state.experience}>
+            data={this.state.experience}
+            saveExperience={this.saveExperience}
+            deleteExperience={this.deleteExperience}>
             </Experience>
             <Education
             data={this.state.education} 
@@ -98,8 +145,10 @@ class Info extends Component{
             </Education>
             <Section>
             <GreenButton>Generate PDF</GreenButton>
-            <OrangeButton>Load Example</OrangeButton>
-            <RedButton>Reset</RedButton>
+            <OrangeButton
+            onClick={() => this.setState(this.exampleState)}>Load Example</OrangeButton>
+            <RedButton
+            onClick={() => this.setState(this.baseState)}>Reset</RedButton>
             </Section>
         </LeftWrap>
     )

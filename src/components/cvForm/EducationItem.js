@@ -30,7 +30,7 @@ class EducationItem extends Component{
                 <Input value={this.state.from} onChange={this.handleChange} name="from"></Input>
                 <Input value={this.state.to} onChange={this.handleChange} name="to"></Input>
                 <Button onClick={() =>this.props.saveEducation(this.state)}>Save</Button>
-                <Button onClick={this.props.deleteEducation} id={this.state.identity}name='delete'>Delete</Button>
+                <Button onClick={this.props.deleteEducation} id={this.state.identity} name='delete'>Delete</Button>
                 </Section>
             </>
         )}
