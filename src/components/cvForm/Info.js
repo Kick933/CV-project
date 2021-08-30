@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {LeftWrap,
+import {Wrapper,
     Section,
     GreenButton,
     OrangeButton,
@@ -129,7 +129,7 @@ class Info extends Component{
 
     render(){
     return(
-        <LeftWrap>
+        <Wrapper>
             <PersonalInfo data={this.state} handleChange={this.handleChange}></PersonalInfo>
             <Experience 
             addExperience={this.addExperience}
@@ -144,13 +144,13 @@ class Info extends Component{
             addEducation={this.addEducation}>
             </Education>
             <Section>
-            <GreenButton>Generate PDF</GreenButton>
+            <GreenButton onClick={() => this.props.updateState(this.state)}>Generate PDF</GreenButton>
             <OrangeButton
             onClick={() => this.setState(this.exampleState)}>Load Example</OrangeButton>
             <RedButton
             onClick={() => this.setState(this.baseState)}>Reset</RedButton>
             </Section>
-        </LeftWrap>
+        </Wrapper>
     )
     }
 }
