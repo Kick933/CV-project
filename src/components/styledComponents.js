@@ -183,6 +183,15 @@ width: 100%;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+padding: 0;
+margin: 0;
+`
+
+const B = styled.p`
+font-weight: bold;
+padding: 0;
+margin: 0;
+font-size: 110%;
 `
 
 export {Title,
@@ -206,5 +215,6 @@ export {Title,
     Div,
     P, 
     DivLeft,
-    FullWidth
+    FullWidth,
+    B
 }

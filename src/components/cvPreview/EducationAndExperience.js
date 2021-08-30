@@ -7,7 +7,7 @@ function EducationAndExperience(props){
     return(
         <DivLeft>
         <EducationPreview data={props.data.education} />
-        <ExperiencePreview />
+        <ExperiencePreview data={props.data.experience} />
         </DivLeft>
     )
     }
