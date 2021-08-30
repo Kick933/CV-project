@@ -8,45 +8,39 @@ class FullPage extends Component{
   constructor(props){
       super(props)
       this.state={
-            firstName: "Abhinav",
-            lastName: "Shukla",
-            title: "Senior Web Developer",
-            address: "61,Professor Colony,Azadnagar, Jind",
-            phoneNumber: "9876543210",
-            email: "test@test.com",
-            description: "I would hire someone who loves their work. And I love web development. I taught myself javascript because i love web development.",
-            education: [
-                {
-                    university: "Example University",
-                    degree: "B.Tech",
-                    subject: "Mechanical",
-                    from: "2010",
-                    to: "2014",
-                    city: "Mumbai"
-                }
-            ],
-            experience: [
-                {
-                    position: "Junior Web Developer",
-                    company: "Example Company",
-                    from: "2015",
-                    to: "2020",
-                    city: "Mumbai"
-                }
-            ]
+        firstName: "",
+        lastName: "",
+        title: "",
+        address: "",
+        phoneNumber: "",
+        email:"",
+        education:[],
+        experience: []
       }
+      this.baseState = this.state
     this.updateState = this.updateState.bind(this)
   }
 
     updateState(x){
-      this.setState(x)
+      this.setState({
+          firstName: x.firstName,
+          lastName: x.lastName,
+          title: x.title,
+          address: x.address,
+          email: x.email,
+          phoneNumber: x.phoneNumber,
+          education: [...x.education],
+          experience: [...x.experience]
+
+        }
+      )
     }
   
   render(){
     return (
       <>
       <Title>CV Generator</Title>
-       <Info print={this.updateState}/>
+       <Info updateState={this.updateState}/>
        <PreviewPage data={this.state}/>
        </>
     )

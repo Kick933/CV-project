@@ -11,7 +11,7 @@ class PersonalData extends Component {
     render(){
         return(
             <Div>
-            <Img src="https://michalosman.github.io/cv-application/static/media/example_photo.7a684f97.jpg" />
+            <Img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg" />
             <h3>Personal Details</h3>
             <H4>Address</H4>
             <P>{this.state.address}</P>

@@ -11,8 +11,8 @@ import PersonalInfo from './PersonalInfo'
 import handleChange from './HandleChange'
 
 class Info extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             firstName: "First Name",
             lastName: "Last Name",
@@ -61,6 +61,7 @@ class Info extends Component{
         this.addExperience = this.addExperience.bind(this)
         this.saveExperience = this.saveExperience.bind(this)
         this.deleteExperience = this.deleteExperience.bind(this)
+        this.print = this.print.bind(this)
     }
 
     addEducation(x){
@@ -126,6 +127,9 @@ class Info extends Component{
            return { experience: prevState.experience.filter(a => a.identity !== parseInt(id)).map((x,index) => x = {...x,identity:index})}
         })
     }
+    print(e){
+        this.props.updateState(this.state)
+    }
 
     render(){
     return(
@@ -144,7 +148,7 @@ class Info extends Component{
             addEducation={this.addEducation}>
             </Education>
             <Section>
-            <GreenButton onClick={() => this.props.updateState(this.state)}>Generate PDF</GreenButton>
+            <GreenButton onClick={this.print}>Generate CV</GreenButton>
             <OrangeButton
             onClick={() => this.setState(this.exampleState)}>Load Example</OrangeButton>
             <RedButton
