@@ -180,9 +180,8 @@ background-color: white;
 `
 const FullWidth = styled.div`
 width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+display: grid;
+grid-template-columns: 1fr 1fr;
 padding: 0;
 margin: 0;
 `

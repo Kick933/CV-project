@@ -27,8 +27,8 @@ class Info extends Component{
         this.exampleState = {
             firstName: "Abhinav",
             lastName: "Shukla",
-            title: "Mr.",
-            address: "61,Professor Colony,Azadnagar, Jind",
+            title: "Senior Web Developer",
+            address: "61,Professor Colony, Azadnagar, Jind",
             phoneNumber: "9876543210",
             email: "test@test.com",
             description: "I would hire someone who loves their work. And I love web development. I taught myself javascript because i love web development.",

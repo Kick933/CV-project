@@ -5,7 +5,15 @@ import {H4, Img, Div, P} from '../styledComponents'
 class PersonalData extends Component {
     constructor(props){
         super(props)
-        this.state= this.props.data
+        this.state= {
+            have: "",
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if(this.props !== prevProps){
+            this.setState(this.props.data)
+        }
     }
 
     render(){
