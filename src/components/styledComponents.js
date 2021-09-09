@@ -77,7 +77,7 @@ font-size: 1.5rem;
 background-color:#333333;
 color: #eeeeee;
 box-sizing: border-box;
-margin: 0.5rem;
+margin: 0.5rem auto;
 border: 1px grey solid;
 border-radius: 10px;
 &:hover{
@@ -89,7 +89,13 @@ border-radius: 10px;
 `
 const GreenButton = styled(Button)`
 background-color: #1ba148;
-color: whitesmoke;`
+color: whitesmoke;
+margin: 0 auto;`
+
+const PrintButton = styled(GreenButton)`
+width: 20vw;
+display: block;
+`
 
 const OrangeButton = styled(Button)`
 color: whitesmoke;
@@ -203,6 +209,7 @@ export {Title,
     printPage,
     Section,
     GreenButton,
+    PrintButton,
     OrangeButton,
     RedButton,
     PrintWrapper,

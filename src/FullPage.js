@@ -2,7 +2,8 @@
 import React,{ Component } from 'react'
 import Info from './components/cvForm/Info';
 import PreviewPage from './components/cvPreview/PreviewPage';
-import { Title } from './components/styledComponents';
+import { Title, PrintButton } from './components/styledComponents';
+import ReactToPrint from 'react-to-print';
 
 class FullPage extends Component{
   constructor(props){
@@ -41,7 +42,13 @@ class FullPage extends Component{
       <>
       <Title>CV Generator</Title>
        <Info updateState={this.updateState}/>
-       <PreviewPage data={this.state}/>
+        <PreviewPage data={this.state} ref={el => (this.componentRef = el)} />
+        <ReactToPrint
+          trigger={() => {
+            return <PrintButton className="printBtn">Print this out! </PrintButton>;
+          }}
+          content={() => this.componentRef}
+        />
        </>
     )
   }

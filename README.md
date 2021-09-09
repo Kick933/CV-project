@@ -6,7 +6,7 @@ Check out live preview [here](https://cvgeneratorbykick.netlify.app).
 - [X] Add Education and Experience Data.
 - [X] Preview CV page.
 - [ ] Add your Image to CV.
-- [ ] Print the CV.
+- [X] Print the CV.
 - [X] Load Example data for reference.
 - [X] Preview Example data.
 

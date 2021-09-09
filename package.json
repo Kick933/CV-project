@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "react-to-print": "^2.13.0",
     "styled-components": "^5.3.0",
     "uuid": "^8.3.2"
   },
