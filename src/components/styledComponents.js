@@ -131,6 +131,13 @@ min-height: 297mm;
 border-radius: 0px;
 padding: 0;
 box-sizing: border-box;
+@media print{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 !important;
+}
 `
 
 const PrintDiv = styled.div`
