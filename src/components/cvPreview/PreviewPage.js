@@ -15,7 +15,8 @@ class PreviewPage extends Component{
             phoneNumber: "",
             email:"",
             education:[],
-            experience: []
+            experience: [], 
+            img: ""
         }
     }
 componentDidUpdate(prevProps){

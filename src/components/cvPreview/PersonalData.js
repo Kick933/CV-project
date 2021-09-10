@@ -1,36 +1,25 @@
-import React, {Component} from 'react'
+import React, { useState, useEffect} from 'react'
 import {H4, Img, Div, P} from '../styledComponents'
 
+function PersonalData(props){
+    const [ state, setState ] = useState({})
 
-class PersonalData extends Component {
-    constructor(props){
-        super(props)
-        this.state= {
-            have: "",
-        }
-    }
+    useEffect(() => {
+        setState(props.data)
+    },[props.data])
 
-    componentDidUpdate(prevProps){
-        if(this.props !== prevProps){
-            this.setState(this.props.data)
-        }
-    }
-
-    render(){
-        return(
-            <Div>
-            <Img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg" />
-            <h3>Personal Details</h3>
-            <H4>Address</H4>
-            <P>{this.state.address}</P>
-            <H4>Phone Number</H4>
-            <P>{this.state.phoneNumber}</P>
-            <H4>Email Address</H4>
-            <P>{this.state.email}</P>
-
-            </Div>
-        )
-    }
+    return(
+        <Div>
+        <Img src={state.img} />
+        <h3>Personal Details</h3>
+        <H4>Address</H4>
+        <P>{state.address}</P>
+        <H4>Phone Number</H4>
+        <P>{state.phoneNumber}</P>
+        <H4>Email Address</H4>
+        <P>{state.email}</P>
+        </Div>
+    )
 }
 
 

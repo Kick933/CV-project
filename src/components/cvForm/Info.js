@@ -22,7 +22,8 @@ class Info extends Component{
             email: "Email",
             description:"Description",
             education: [],
-            experience: []
+            experience: [],
+            img: ""
         }
         this.exampleState = {
             firstName: "Abhinav",
@@ -50,7 +51,8 @@ class Info extends Component{
                     to: "2020",
                     city: "Mumbai"
                 }
-            ]
+            ], 
+            img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg"
         }
         this.baseState = this.state
         this.handleChange = handleChange.bind(this)
@@ -62,6 +64,7 @@ class Info extends Component{
         this.saveExperience = this.saveExperience.bind(this)
         this.deleteExperience = this.deleteExperience.bind(this)
         this.print = this.print.bind(this)
+        this.updateImg = this.updateImg.bind(this)
     }
 
     addEducation(x){
@@ -75,6 +78,11 @@ class Info extends Component{
     }
         )
 }
+    updateImg(x){
+        this.setState({
+            img: x
+        })
+    }
 
     addExperience(x){
         this.setState(prevState => {
@@ -134,7 +142,7 @@ class Info extends Component{
     render(){
     return(
         <Wrapper>
-            <PersonalInfo data={this.state} handleChange={this.handleChange}></PersonalInfo>
+            <PersonalInfo data={this.state} handleChange={this.handleChange} updateImg={this.updateImg}></PersonalInfo>
             <Experience 
             addExperience={this.addExperience}
             data={this.state.experience}

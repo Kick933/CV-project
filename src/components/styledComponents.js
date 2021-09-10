@@ -39,11 +39,10 @@ padding: 0.5rem;
 border-radius: 5px;
 border: 1px solid transparent;
 display: block;
-margin:1rem;
+margin: 0.3rem;
 width: 90%;
-background: #eeeeee;
-color:#878787;
 box-sizing: border-box;
+background-color: #ffffff;
 `
 const Description = styled.textarea`
 padding: 0.5rem;
@@ -205,6 +204,10 @@ padding: 0;
 margin: 0;
 font-size: 110%;
 `
+const FileInput = styled(Input)`
+width: 100%;
+`
+
 
 export {Title,
     Input,
@@ -229,5 +232,6 @@ export {Title,
     P, 
     DivLeft,
     FullWidth,
-    B
+    B, 
+    FileInput
 }

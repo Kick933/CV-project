@@ -16,7 +16,8 @@ class FullPage extends Component{
         phoneNumber: "",
         email:"",
         education:[],
-        experience: []
+        experience: [],
+        img: ""
       }
       this.baseState = this.state
     this.updateState = this.updateState.bind(this)
@@ -31,7 +32,8 @@ class FullPage extends Component{
           email: x.email,
           phoneNumber: x.phoneNumber,
           education: [...x.education],
-          experience: [...x.experience]
+          experience: [...x.experience],
+          img: x.img
 
         }
       )
