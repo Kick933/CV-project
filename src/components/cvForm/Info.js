@@ -57,17 +57,9 @@ class Info extends Component{
         this.baseState = this.state
         this.handleChange = handleChange.bind(this)
         this.PersonalInfo = PersonalInfo.bind(this)
-        this.addEducation = this.addEducation.bind(this)
-        this.deleteEducation = this.deleteEducation.bind(this)
-        this.saveEducation = this.saveEducation.bind(this)
-        this.addExperience = this.addExperience.bind(this)
-        this.saveExperience = this.saveExperience.bind(this)
-        this.deleteExperience = this.deleteExperience.bind(this)
-        this.print = this.print.bind(this)
-        this.updateImg = this.updateImg.bind(this)
     }
 
-    addEducation(x){
+    addEducation = x =>{
     this.setState(prevState => {
         return {
             education : prevState.education.concat([{
@@ -78,13 +70,13 @@ class Info extends Component{
     }
         )
 }
-    updateImg(x){
+    updateImg = x =>{
         this.setState({
             img: x
         })
     }
 
-    addExperience(x){
+    addExperience = x =>{
         this.setState(prevState => {
             return {
                 experience : prevState.experience.concat([{
@@ -96,14 +88,14 @@ class Info extends Component{
             )
     }
 
-    deleteEducation(event){
+    deleteEducation = event =>{
         const {id} = event.target
         this.setState(prevState =>{
            return { education: prevState.education.filter(a => a.identity !== parseInt(id)).map((x,index) => x = {...x,identity:index})}
         })
     }
 
-    saveEducation(x){
+    saveEducation= x =>{
         const {identity} = x
         this.setState(prevState =>{
             return{
@@ -116,7 +108,7 @@ class Info extends Component{
         })
     }
 
-    saveExperience(x){
+    saveExperience = x =>{
         const {identity} = x
         this.setState(prevState =>{
             return{
@@ -129,13 +121,13 @@ class Info extends Component{
         })
     }
 
-    deleteExperience(event){
+    deleteExperience = event =>{
         const {id} = event.target
         this.setState(prevState =>{
            return { experience: prevState.experience.filter(a => a.identity !== parseInt(id)).map((x,index) => x = {...x,identity:index})}
         })
     }
-    print(e){
+    print = e =>{
         this.props.updateState(this.state)
     }
 

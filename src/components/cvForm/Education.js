@@ -17,9 +17,8 @@ class Education extends Component{
         }
         this.baseState = this.state
         this.handleChange = handleChange.bind(this)
-        this.reset = this.resetState.bind(this)
     }
-    resetState(){
+    resetState= ()=>{
         this.setState(this.baseState)
     }
     render(){
